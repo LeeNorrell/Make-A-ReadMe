@@ -1,10 +1,13 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-
+const getLicenseBadge = require('./utils/getLicenseBadge');
 // TODO: Create an array of questions for user input
-inquirer
-    .prompt([
+const questions = [
+        {
+            name: 'description',
+            message: 'Describe your project.'
+        },
         {
             name: 'motivation',
             message: 'What was your motivation?'
@@ -25,35 +28,56 @@ inquirer
             name: 'standout',
             message: 'What makes your project stand out?'
         },
-    ])
-    .then(answers => {
-        const readmeContent = `
-        #Project README
+        {
+            type: 'list',
+            name: 'license',
+            message: 'which license would you like to add?',
+            choices: ['MIT','ODbl','IPL']
+           
+        },
+]
+    
+const readmeContent = (answers) =>`
+# Project README
 
-        ## Motivation
-        ${answers.motivation}
+## Description
+${answers.description}
 
-        ## Project
-        ${answers.project}
+## Your Motivation
+${answers.motivation}
 
-        ## Problem Solved
-        ${answers.problem}
+## About your Project
+${answers.project}
 
-        ## Learnings
-        ${answers.learn}
+## Problem's Solved
+${answers.problem}
 
-        ## Standout Feature
-        ${answers.standout}
-         `;
+## What did you Learn
+${answers.learn}
 
-            fs.writeFile('README.md', readmeContent, (err) => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log('README.md file created successfully!');
-                }
-            });
-    });
+## Standout Feature
+${answers.standout}
+
+## License
+${getLicenseBadge(answers.license)}
+ `;
+
+    function init (listOfQuestions){
+        inquirer
+        .prompt(listOfQuestions)
+        .then(answers => {
+                fs.writeFile('README.md',       readmeContent(answers)
+                , (err) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log('README.md file created successfully!');
+                    }
+                });
+        });
+    }
+
+    init(questions);
 //const questions = [];
 
 // TODO: Create a function to write README file

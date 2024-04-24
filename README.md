@@ -1,18 +1,24 @@
 
-        #Project README
+# Project README
 
-        ## Motivation
-        to make my momma proud
+## Description
+my project is creating a readme page through node.
 
-        ## Project
-        so she could read about what i did
+## Motivation
+my motivation was to create a working project to help make a professional readme.
 
-        ## Problem Solved
-        her knowledge is greater now
+## Project
+I built this project so it would be easy and simple to have a professional styled page.
 
-        ## Learnings
-        how to make this 
+## Problem Solved
+It solves the problem of worrying about the appearance of you're readme to potential hieres. 
 
-        ## Standout Feature
-        its for my mom
-         
+## Learnings
+I learned alot about node.js and what makes it up. 
+
+## Standout Feature
+what makes my project stand out is how easy the code is to read and the questions you answer.
+
+## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+ 
